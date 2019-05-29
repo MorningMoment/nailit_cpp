@@ -35,17 +35,30 @@ void ptswap(int *a, int *b){ //实质上是地址的值转递 .但只改变了ab，没改变x,y
 }
 
 void ptvalueswap(int *a, int *b){ //实质上是地址所指的内容的交换 
-	cout <<" ptswap *a = "<<*a<< " *b = "<<*b<<endl; 
+	cout <<" ptvalueswap *a = "<<*a<< " *b = "<<*b<<endl; 
 	cout << "add a = "<<a<< " add b = "<<b<<endl;
 	
 	int temp = *a;
 	*a = *b;
 	*b = temp;
 	
-	cout <<" ptswap *a = "<<*a<< " *b = "<<*b<<endl; 
+	cout <<" ptvalueswap *a = "<<*a<< " *b = "<<*b<<endl; 
 	cout << "add a = "<<a<< " add b = "<<b<<endl;
 	cout<<"***************************"<<endl;
 }
+
+void ptsrefwap(int& *a, int& *b){ //实质上是地址的值转递 .但只改变了ab，没改变x,y 
+	cout <<" ptswap a = "<<*a<< " b = "<<*b<<endl; 
+	cout << "add a = "<<a<< " add b = "<<b<<endl;
+	int *temp = a;
+	a = b;
+	b = temp;
+	cout <<" ptswap a = "<<*a<< " b = "<<*b<<endl; 
+	cout << "add a = "<<a<< " add b = "<<b<<endl;
+	cout<<"***************************"<<endl<<endl;
+}
+
+
 
 int main(){
 	int x=5, y=10;
@@ -57,7 +70,8 @@ int main(){
 	cout<<"x ="<<x<<" y = "<<y<<endl<<endl; //换了x，y地址的值，但是没有换x，y本身的值 
 	ptvalueswap(&x,&y);
 	cout<<"x ="<<x<<" y = "<<y<<endl<<endl; // 换了 x，y的值 ,没有交换地址 
-	 
+	ptsrefwap(&x,&y);
+	cout<<"x ="<<x<<" y = "<<y<<endl<<endl;
 	
 	
 	return 0;

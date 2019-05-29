@@ -4,7 +4,7 @@
 using namespace std;
 
 int main(){
-	ifstream myin("F:/Travail/大四下/cpp/files/1.txt");
+	ifstream myin("F:/Travail/大四下/cpp/nailit_cpp/files/1.txt");
 	double x;
 	double sum = 0;
 	string s;

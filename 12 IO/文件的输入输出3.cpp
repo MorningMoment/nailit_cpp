@@ -5,7 +5,7 @@
 using namespace std;
 
 int main(){
-	ofstream myout("F:/Travail/大四下/cpp/nailit_cpp/files/2.txt");//存为这个文件 
+	ofstream myout("F:/Travail/大四下/cpp/nailit_cpp/files/2.txt",ios::app);//打开已有的文件接着写入 
 	string name;
 	int score;
 	
