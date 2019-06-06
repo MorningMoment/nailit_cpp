@@ -9,7 +9,7 @@ class student{
 		double *score; 
 	
 	public : 
-		student(); 
+		student(char *new_name); 
 		student(long new_id,char *new_name,double new_score);
 		~student(); 
 		void printinfo();
@@ -26,13 +26,13 @@ class student{
 		 
 };
 
-student::student(){
-	id = "...";
+student::student(char *new_name  = "mary"){
+	id = 12344;
+	int new_score = 100;
 	name = new char[100];
-	strcpy(name,"mary");
-	double newscore = 98;
-	*score = newscore;
-}
+	strcpy(name,new_name);
+	*score = new_score;
+} 
 
 student::student(long new_id,char *new_name,double new_score){
 	this -> score = new double;
@@ -74,6 +74,7 @@ void student::printinfo(){
 	cout<<"id: "<<id<<endl;
 	cout<<"name: "<<name<<endl; //attention here
 	cout<<"score: "<<*score<<endl; 
+}
 
 //************************
 //************************
@@ -83,38 +84,34 @@ class undergraduate:public student{
 	private:
 		string major;
 	public:
-		undergraduate(){ //不指定父类的构造函数，调用无参构造函数 
-			major ="un";
-			cout<<"ug constructor...with no para"<<endl;
-		}
-//		undergraduate(string nm = "nming", inc sc=0, string mj="un"){ //调用父类的有参构造函数 
-//			major = mj;
-//			cout<<"ug constructor... with para"<<endl;
+//		undergraduate(){ //不指定父类的构造函数，调用无参构造函数 
+//			major ="un";
+//			cout<<"ug constructor...with no para"<<endl;
 //		}
+		undergraduate(string nm = "nming", int sc=0, string mj="un"){ //调用父类的有参构造函数  ????
+			major = mj;
+			cout<<"ug constructor... with para"<<endl;
+		}
 	
 }; 
 
-class int_und:public undergraduate{
-	private:
-		string nationality;
-	public:
-		int_und(){
-			cout<<"interna ug constructor ... with no para"<<endl;
-		}
-		int_und(string nm,int sc=0,string mj = "un",string na = "sk"){
-			nationality = nm;
-			cout<<"interna ug constructor ... with para";
-		}
+//class int_und:public undergraduate{
+//	private:
+//		string nationality;
+//	public:
+//		int_und(){
+//			cout<<"interna ug constructor ... with no para"<<endl;
+//		}
+//		int_und(string nm,int sc=0,string mj = "un",string na = "sk"){
+//			nationality = nm;
+//			cout<<"interna ug constructor ... with para";
+//		}
 		
-}; 
+//}; 
 
 
 int main(){
-
 	undergraduate u1;
-	u1.printinfo();//但会看不到major 
-	 
-	 
 	return 0;
 }
 

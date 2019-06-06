@@ -15,6 +15,9 @@ class shape{
 			cout<<"This is a shape"<<"   "<<"color = "<<color<<endl;
 		} 
 		
+		virtual double getarea()=0; //纯虚函数的定义，没有函数体。
+		//定义了纯虚函数后，类就成了抽象类。 
+		//下面每一个类都要定义getarea函数 
 		
 		~shape(){
 			cout<<"shape destuctor ***"<<endl<<endl;
@@ -34,7 +37,9 @@ class circle:public shape{
 		~circle(){
 			cout<<"********** circle destructor"<<endl;
 		}
-
+		double getarea(){ //因为shape里定义了纯虚函数。  子类必须实现父类的纯虚函数，自己才不是抽象类 
+			return r*r*3.14;
+		} 
 };
 
 class rec:public shape{
@@ -50,7 +55,9 @@ class rec:public shape{
 		void showinfo(){
 			cout<<"This is a rec: "<<color<<"("<<x<<","<<y<<")"<<endl;
 		}
-
+		double getarea(){//子类必须实现父类的纯虚函数，自己才不是抽象类 
+			return w*h;
+		} 
 };
 
 
@@ -64,16 +71,18 @@ int main(){
 	
 	cout<<endl<<endl<<"1*********************"<<endl;
 	
-	shape s1 = c1; //抽象类不能有对象 
-	s1.showinfo();//调用的是shape的showinfo ，不能访问子类的东西  
-	cout<<endl<<endl<<"2*********************"<<endl;
+//	shape s1 = c1; //抽象类不能有对象 
+//	s1.showinfo();//调用的是shape的showinfo ，不能访问子类的东西  
+//	cout<<endl<<endl<<"2*********************"<<endl;
 	
-	shape *spt = &c1; 
+	shape *spt = &c1; //纯虚函数可以用指针赋值 
 	spt->showinfo();//在父类shape的showinfo 为虚函数时，调用的是circle的showinfo 
+	cout<<spt->getarea()<<endl; 
 	cout<<endl<<endl<<"3*********************"<<endl;
 	
-	shape &sref = c1; 
+	shape &sref = r1; //纯虚函数可以引用赋值 
 	sref.showinfo();//在父类shape的showinfo 为虚函数时，调用的是circle的showinfo  
+	cout<<sref.getarea()<<endl;
 	cout<<endl<<endl<<"4*********************"<<endl;
 	return 0;
 }
